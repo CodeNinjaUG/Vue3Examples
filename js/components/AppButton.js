@@ -1,14 +1,32 @@
 export default{
     template: `
-       <button style="background-color:black; color:white;" :disabled="processing"><slot/></button>
+       <button :class="{
+           'bd-radius': true,
+           'bg-color-primary': type=='primary',
+           'bg-color-secondary': type=='secondary',
+           'bg-color-muted': type =='muted',
+           'is-loading':processing
+       }"  :disabled="processing">
+       <slot/>
+       </button>
     `,
      mounted() {
-        alert('hello');
+        
+    },
+    props:{
+       type :{
+           type: String,
+           default: 'primary'
+       },
+       processing:{
+           type: Boolean,
+           default: false
+       }
     },
     data(){
-        return {
-            processing:false
-        };
+        // return {
+        //     processing:false
+        // };
     }
 
 }
