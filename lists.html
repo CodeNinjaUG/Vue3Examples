@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF_8">
+        <title>Vuejs Basics</title>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+    <body>
+        <div id="app">
+            <section v-show="IncompletedAssignments.length">
+             <h2>Inprogress Assignments</h2>
+             <ul>
+                 <li v-for="assignment in IncompletedAssignments" :key="assignment.id">
+                    <label>
+                        {{ assignment.name }}
+                        <input type="checkbox" v-model="assignment.complete">
+                  </label>
+                 </li>
+             </ul> 
+             <pre> {{ assignments}}</pre>
+            </section>
+
+            <section v-show="completedAssignments.length">
+                <h2>Completed Assignments</h2>
+                <ul>
+                    <li v-for="assignment in completedAssignments" :key="assignment.id">
+                       <label>
+                           {{ assignment.name }}
+                           <input type="checkbox" v-model="assignment.complete">
+                     </label>
+                    </li>
+                </ul> 
+                <pre> {{ assignments}}</pre>
+               </section>
+        </div>
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                assignments:[
+                       {name :"finish project" , complete:false, id:1},
+                       {name :"Read Chapter 4" , complete:false , id:2},
+                       {name :"Turn in HomeWork" , complete:false, id:3},
+                       {name :"Code project" , complete:false, id:4},
+                    ]
+                       //greeting:'What is Up'
+                    };
+                },
+                computed:{
+
+                 completedAssignments(){
+                     return this.assignments.filter(assignment => assignment.complete);
+                 },
+                 IncompletedAssignments(){
+                     return this.assignments.filter(assignment => ! assignment.complete);
+                 }
+
+                },
+
+                mounted(){
+                    // setTimeout(()=>{
+                    //     this.greeting = "has changed";
+                    // },3000);
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

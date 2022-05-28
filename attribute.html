@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF_8">
+        <title>Vuejs Attribute & Event Handling</title>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+    <style>
+        .text-red {
+            color:red;
+        }
+        .text-green {
+            color:aqua;
+        }
+    </style>
+    <body>
+        <div id="app">
+             <button :class="active ? 'text-red':'text-green'" @click="toggle">Click Me </button>
+        </div>
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                      // buttonClasses:'text-green'
+                       active  : false
+                    };
+                },
+                methods:{
+                    toggle() {
+                        this.active = !this.active;
+                      // this.buttonClasses = 'text-red';
+                    }
+                },
+                mounted(){
+
+                    // setTimeout(()=>{
+                    //     this.greeting = "has changed";
+                    // },3000);
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>
