@@ -11,10 +11,10 @@ export default{
  data() {
         return {
            assignments:[
-           {name :"finish project" , complete:false, id:1},
-           {name :"Read Chapter 4" , complete:false , id:2},
-           {name :"Turn in HomeWork" , complete:false, id:3},
-           {name :"Code project" , complete:false, id:4},
+           {name :"finish project" , complete:false, id:1, tag:'math'},
+           {name :"Read Chapter 4" , complete:false , id:2, tag:'biology'},
+           {name :"Turn in HomeWork" , complete:false, id:3, tag:'math'},
+           {name :"Code project" , complete:false, id:4 ,tag:'science'},
         ],
          newAssignment:'',
            //greeting:'What is Up'
@@ -37,7 +37,6 @@ computed:{
        },
        methods:{
           add(name){
-           alert(name)
             this.assignments.push({
                name: name,
                completed:false,
