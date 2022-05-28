@@ -2,30 +2,26 @@
 <html lang="en">
     <head>
         <meta charset="UTF_8">
-        <title>Vuejs Basics</title>
+        <title>Vuejs Basics Components</title>
         <script src="https://unpkg.com/vue@3"></script>
     </head>
     <body>
         <div id="app">
-            <button>Heheheh</button>
-            <p>
-                <input type="text" v-model="greeting">
-            </p>
-             {{ greeting }} ({{greeting.length}})
+           <app-button>Like</app-button>
+           <app-button>Love</app-button>
         </div>
-        <script>
-            Vue.createApp({
-                data() {
-                    return {
-                       greeting:'What is Up'
-                    };
-                },
-                mounted(){
-                    setTimeout(()=>{
-                        this.greeting = "has changed";
-                    },3000);
+
+        <script type="module">
+            import AppButton from "./js/components/AppButton.js"
+            let app = {
+                components:{
+                    'app-button': AppButton,
+                    // 'assignments-list':{},
+                    // 'assignments-list-item':{},
+                    // 'app-accordion':{},
                 }
-            }).mount('#app');
+            };
+            Vue.createApp(app).mount('#app');
         </script>
     </body>
 </html>
